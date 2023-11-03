@@ -1,0 +1,21 @@
+TodoInput
+TodoList
+TodoItem
+
+App.js에서 상태변경
+    ㄴ addTodo 메서드에서 state변경 코드
+        ㄴ bind는 App컴포넌트에서 state를 변경 하려면 꼭 사용해야 하는 코드
+
+TodoInput 컴포넌트에는 props로 addTodo메서드가 전달됩니다.
+사용자가 등록 버튼을 클릭할때 마다 addTodo메서드를 호출하는 handleClick메서드를 새로 추가합니다(예제4.41).addTodo 메서드를 만들때처럼
+constructor에서 handleClick메서드의 this를 강제로 지정하는 것을 잊지 말아주세요.
+
+dispatch로 상태가 변화하는 시점에 함수가 호출된다.
+
+onclick 이벤트에 등록한 함수는 매개변수로 Event 객체를 전달받습니다.
+
+
+
+생성자에 this
+    ㄴ 생성자 함수 내부의 this는 생성자 함수가 생성할 인스턴스를 가르킨다.
+    ㄴ 객체 리터럴 부분에서의 this는 메서드를 호출한 객체를 가르킨다.
