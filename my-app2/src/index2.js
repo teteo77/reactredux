@@ -1,5 +1,7 @@
 import React from 'react';
+// 5-5 render호출
 import { render } from 'react-dom';
+// 3-1 createStore호출
 import { createStore } from 'redux';
 
 // 스토어의 초기 상태
@@ -10,14 +12,12 @@ const initialState = {
   tasks: []
 };
 
-// 1
+// 1 P98
 // 리듀서 첫번쨰 매게 변수에는 현재 상태를 나타내는 state를 전달
 // 초기 상태로 이전에 정의한 initialState를 지정 했습니다.
 // 두번쨰 매개변수에는 어떤 조작을 할지 나태는 액션 객체를 전달합니다.
 // task를 추가하기 위한 액션 객체 입니다.
 function tasksReducer(state = initialState, action) {
-
-
   switch (action.type) {
       // 5-2 P107
       // type이 INPUT_TASK인 액션이 디스패치될 때 task 입력 값을 저장됩니다.
@@ -33,6 +33,8 @@ function tasksReducer(state = initialState, action) {
     case 'ADD_TASK':
       return {
         ...state,
+        // ㄴ spread 연산자
+        // 출처: https://velog.io/@tnstjd120/%EC%8A%A4%ED%94%84%EB%A0%88%EB%93%9C-%EC%97%B0%EC%82%B0%EC%9E%90spread-operator
         tasks: state.tasks.concat([action.payload.task])
       };
     default:
@@ -78,7 +80,9 @@ function TodoApp({ store }) {
     {/* 이어서 이러한 컴포넌트를 렌더링 하기 위한 함수를 만듭니다. */}
 
       <input type="text" onChange={(e) => store.dispatch(inputTask(e.target.value))} />
+                                                        {/* ㄴ store에inputTask가 사용된다. */}
       <input type="button" value="add" onClick={() => store.dispatch(addTask(task))} />
+                                                                  {/* ㄴ store에 addTask가 사용된다. */}
       <ul>
         {
           tasks.map(function(item, i) {
@@ -104,3 +108,5 @@ function renderApp(store) {
 
 store.subscribe(() => renderApp(store));
 renderApp(store);
+
+// 삭제나 수정 기능이 없는데 만들어 보면 좋을거 같다.
