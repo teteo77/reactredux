@@ -1,1 +1,1 @@
-set concat정리 2map정리하기, my-app2-practice에 my-app2복습
+set concat정리 2map정리, my-app2-practice에 my-app2복습및 delete기능 추가

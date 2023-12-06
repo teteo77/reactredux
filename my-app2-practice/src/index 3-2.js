@@ -2,9 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 
-let id=0;
 const initialState = {
-  id: id++,
   task: '',
   tasks: []
 };
@@ -18,7 +16,6 @@ function tasksReducer(state = initialState, action) {
       };
     case 'ADD_TASK':
       return {
-        id:id++,
         ...state,
         tasks: state.tasks.concat([action.payload.task])
       };
@@ -43,21 +40,6 @@ function tasksReducer(state = initialState, action) {
         ...state,
         tasks: arr2
       }
-
-    case 'UPDATE_TASK':
-      
-      if(state.id == action.payload.index){
-
-      }
-
-      {
-        return
-      }
-
-
-
-
-
     default:
       return state;
   }
@@ -65,17 +47,17 @@ function tasksReducer(state = initialState, action) {
 
 const store = createStore(tasksReducer);
 
-const inputTask = (task,id) => ({
+const inputTask = (task) => ({
   type: 'INPUT_TASK',
   payload: {
-    id,task
+    task
   }
 });
 
-const addTask = (task, id) => ({
+const addTask = (task) => ({
   type: 'ADD_TASK',
   payload: {
-    id,task
+    task
   }
 });
 
@@ -90,36 +72,26 @@ const delete2 = (index) => ({
 });
 // 2-2 DELETE_TASK액션으로 이동
 
-const update = (index) => ({
-  type: 'UPDATE_TASK',
-  payload: {
-    index
-  }
-})
-
 
 
 
 
 function TodoApp({ store }) {
-  const { id, task, tasks } = store.getState();
+  const { task, tasks } = store.getState();
   return (
     <div>
       <input type="text" onChange={(e) => store.dispatch(inputTask(e.target.value))} />
-      <input type="button" value="add" onClick={() => store.dispatch(addTask(id, task))} />
+      <input type="button" value="add" onClick={() => store.dispatch(addTask(task))} />
       {/* <input type="button" value="delete" onClick={() => store.dispatch(delete2())} /> */}
       {/* ㄴ 테스크 값 */}
       
       <ul>
         {
-          tasks.map(function(item, i,id) {
+          tasks.map(function(item, i) {
             return (<>
-                      <div>{id}</div>
                       <li key={i}>{item}</li>
                       {/* 2-1 delete2함수 호출 */}
                       <input type="button" value="delete" onClick={()=>store.dispatch(delete2(i))}></input>
-                      {/* 3-1 update 함수 호출 */}
-                      {/* <input type="button" value="update" onClick={()=>store.dispatch(update(i))}></input> */}
                     </>
               // <li key={i}>{item}</li></><input type="button"></input></>
             );
