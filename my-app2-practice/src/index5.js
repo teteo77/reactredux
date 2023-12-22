@@ -7,20 +7,6 @@ const initialState = {
   tasks: ["task1", "task2"]
 };
 
-
-
-// Action- Reducer- store- UI 순으로 순환한다.
-// Action은 UI에서 클릭하면 발생
-// Reducer는 store가 가지고 있는 상태를 변환 시키기 위한 함수.
-// Store는 상태를 변환해서 UI로 전송
-// UI 에서 클라이언트가 기능 클릭
-// 개념으로 접근하고 함수로 코딩해라 명심해라.
-  // ㄴ 그냥 바로 redux로 넘어가자. 그냥 redux바로 하는게 재밌을거 같음
-    // ㄴ 다시 찾아보니까 프로젝트가 작으면 reducer가 권장되는거 같음 큰 프로젝트에 redux가 필요하다
-    // ㄴ reducer도 이해 필요하니까 일단 redcuer로 하자.
-
-
-//4-3 여기가 Reducer
 function tasksReducer(state = initialState, action) {
   switch (action.type) {
     case 'INPUT_TASK':
@@ -59,11 +45,8 @@ function tasksReducer(state = initialState, action) {
   }
 }
 
-//4-4 여기가 store
 const store = createStore(tasksReducer);
 
-
-//4 여기가 action
 const inputTask = (task) => ({
   type: 'INPUT_TASK',
   payload: {
@@ -93,8 +76,6 @@ const delete2 = (index) => ({
 
 
 
-
-// 4-3 여기가 UI 
 function TodoApp({ store }) {
   const { task, tasks } = store.getState();
   const [isUpdate, setIsUpdate] = useState(false)

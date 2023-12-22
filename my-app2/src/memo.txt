@@ -31,3 +31,4 @@ Flux 패턴
     ㄴ 96~ 108까지는 설명
     ㄴ 정리된건 109~110 참고 소스는 unuse-react-redux
     ㄴ 5-1에 111~113은 참고 소스 unuse-react-redux-formatted
+    ㄴ 5-2에 redux가 나온다
