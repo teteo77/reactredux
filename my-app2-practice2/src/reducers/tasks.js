@@ -16,6 +16,7 @@ export default  function tasksReducer(state = initialState, action) {
         ...state,
         task: action.payload.task
       };
+      
     case 'ADD_TASK':
       return {
         ...state,
@@ -42,6 +43,19 @@ export default  function tasksReducer(state = initialState, action) {
         ...state,
         tasks: arr2
       }
+
+      case 'UPDATE_TASK':
+
+        return{
+          ...state,
+          tasks: state.tasks.map((task, index)=> {
+            if(index=== action.payload.index){
+              return action.payload.task
+            }
+            return task;
+          })
+
+        }
     default:
       return state;
   }

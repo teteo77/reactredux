@@ -26,3 +26,10 @@ export const delete2 = (index) => ({
   // 테스트 값
 });
 // 2-2 DELETE_TASK액션으로 이동
+
+export const update = (index, task)=>({
+  type: 'UPDATE_TASK',
+  payload: {
+    index,task
+  }
+})
